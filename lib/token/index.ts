@@ -1,8 +1,10 @@
 import { ACCESS_TOKEN_KEY } from "../../constants/token.constant";
 
 class Token {
-  public getToken(key: string): string | null {
-    return localStorage.getItem(key);
+  public getToken(key: string) {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem(key);
+    }
   }
 
   public setToken(key: string, token: string): void {
