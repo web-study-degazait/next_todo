@@ -14,21 +14,18 @@ import Profile from "../../asset/Profile.svg";
 import HomeTodoList from "./HomeTodoList";
 import { useRouter } from "next/router";
 import HomeTodoDetail from "./HomeTodoItem/HomeTodoDetail";
-import Modal from "../Common/Modal";
-import useModal from "../../hooks/Modal/useModal";
 import useLogout from "../../hooks/Auth/useLogout";
 import useTokenCheck from "../../hooks/Auth/useTokencheck";
 
 const Home = () => {
   const router = useRouter();
-  const detailModal = useModal();
   const { onLogout } = useLogout();
   const { isAuthority } = useTokenCheck();
 
   if (!isAuthority) {
-    window.alert("토큰이 없습니다");
+    window.alert("토큰이 존재하지 않습니다.");
     router.push("/auth/login");
-    return;
+    return <></>;
   }
 
   return (

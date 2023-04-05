@@ -2,7 +2,6 @@ import { NextPage } from "next";
 import React from "react";
 import { dehydrate, QueryClient } from "react-query";
 import Home from "../components/Home";
-import HomeTodoDetail from "../components/Home/HomeTodoItem/HomeTodoDetail";
 import { GetTodoByIdParam } from "../repository/Todo/todo.param";
 import todoRepository from "../repository/Todo/todo.repository";
 
