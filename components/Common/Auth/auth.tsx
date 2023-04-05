@@ -72,7 +72,12 @@ const Auth = () => {
             <AuthSubmitButton type="submit">회원가입</AuthSubmitButton>
             <AuthPathText>
               이미 계정이 있으신가요?{" "}
-              <strong onClick={() => router.push("/auth/login")}>로그인</strong>
+              <strong
+                style={{ cursor: "pointer" }}
+                onClick={() => router.push("/auth/login")}
+              >
+                로그인
+              </strong>
             </AuthPathText>
           </AuthBottomWrap>
         </AuthWrap>

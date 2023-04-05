@@ -72,7 +72,13 @@ const Login = () => {
             />
             <AuthSubmitButton type="submit">로그인</AuthSubmitButton>
             <AuthPathText>
-              계정이 없다면 <strong>회원가입</strong>
+              계정이 없다면{" "}
+              <strong
+                style={{ cursor: "pointer" }}
+                onClick={() => router.push("/auth/signup")}
+              >
+                회원가입
+              </strong>
             </AuthPathText>
           </AuthBottomWrap>
         </AuthWrap>
