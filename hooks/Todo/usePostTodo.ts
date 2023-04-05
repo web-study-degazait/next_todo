@@ -1,8 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useQueryClient } from "react-query";
-import { useCreateTodoQuery } from "../../queries/Todo/Todo.query";
+import { useCreateTodoQuery } from "../../queries/Todo/todo.query";
 import { CreateTodoParam } from "../../repository/Todo/todo.param";
-import useModal from "../Modal/useModal";
 
 interface Props {
   onClose: () => void;
@@ -12,8 +11,6 @@ const usePostTodo = ({ onClose }: Props) => {
   const queryClient = useQueryClient();
 
   const createTodoMutation = useCreateTodoQuery();
-
-  const { close } = useModal();
 
   const [todoData, setTodoData] = useState<CreateTodoParam>({
     title: "",

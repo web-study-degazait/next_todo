@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const TodoItemContainer = styled.div`
   width: 100%;
@@ -28,8 +28,14 @@ export const TodoItemBox = styled.div`
   justify-content: start;
 `;
 
-export const TodoItemTitle = styled.p`
+export const TodoItemTitle = styled.p<{ checked: boolean }>`
   font-size: 20px;
+
+  ${({ checked }) =>
+    checked &&
+    css`
+      text-decoration: line-through;
+    `}
 `;
 
 export const TodoItemDelBtn = styled.button`
@@ -51,6 +57,13 @@ export const TodoItemDelBtn = styled.button`
 `;
 
 export const TodoItemCheckBox = styled.input`
-  width: 25px;
-  height: 25px;
+  width: 200px;
+  height: 200px;
+`;
+
+export const TodoItemCheckContainer = styled.div`
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `;

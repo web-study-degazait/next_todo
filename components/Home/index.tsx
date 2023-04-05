@@ -12,24 +12,37 @@ import {
 } from "./style";
 import Profile from "../../asset/Profile.svg";
 import HomeTodoList from "./HomeTodoList";
-import { useGetTodosQuery } from "../../queries/Todo/Todo.query";
+import { useRouter } from "next/router";
+import HomeTodoDetail from "./HomeTodoItem/HomeTodoDetail";
+import Modal from "../Common/Modal";
+import useModal from "../../hooks/Modal/useModal";
+import useLogout from "../../hooks/Auth/useLogout";
 
 const Home = () => {
+  const router = useRouter();
+  const detailModal = useModal();
+  const { onLogout } = useLogout();
   return (
-    <HomeContainer>
-      <HomeTopWrap>
-        <HomeTopSideWrap>
-          <HomeProfieImage src={Profile.src} />
-          <HomeProfileWrap>
-            <HomeProfileText>Hi Guy 👋🏽</HomeProfileText>
-            <HomeTodoLength>4 tasks pending</HomeTodoLength>
-          </HomeProfileWrap>
-        </HomeTopSideWrap>
-        <HomeTitle>ToDo List</HomeTitle>
-        <HomeLogoutText>로그아웃</HomeLogoutText>
-      </HomeTopWrap>
-      <HomeTodoList />
-    </HomeContainer>
+    <>
+      {router.query.id ? (
+        <HomeTodoDetail id={router.query.id as string} />
+      ) : (
+        <HomeContainer>
+          <HomeTopWrap>
+            <HomeTopSideWrap>
+              <HomeProfieImage src={Profile.src} />
+              <HomeProfileWrap>
+                <HomeProfileText>Hi Guy 👋🏽</HomeProfileText>
+                <HomeTodoLength>열심히 살아 봅시다</HomeTodoLength>
+              </HomeProfileWrap>
+            </HomeTopSideWrap>
+            <HomeTitle>ToDo List</HomeTitle>
+            <HomeLogoutText onClick={onLogout}>로그아웃</HomeLogoutText>
+          </HomeTopWrap>
+          <HomeTodoList />
+        </HomeContainer>
+      )}
+    </>
   );
 };
 
